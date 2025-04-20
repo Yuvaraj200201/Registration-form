@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Message</title>
+  </head>
+  <body>
+    <style>
+      body {
+        background-color: lightsteelblue;
+      }
+      #textBox {
+        border-radius: 5px;
+        width: 400px;
+        height: 300px;
+      }
+      .container {
+        width: 500px;
+        margin: 5% 35% 0 35%;
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 10px 10px 10px black;
+      }
+      .charWar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+      }
+      #warning {
+        color: red;
+      }
+      #charCount {
+        text-align: end;
+      }
+      #btnSend {
+        width: 80%;
+        color: white;
+        background-color: red;
+        border: none;
+        border: black solid 1px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+      .btns {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-top: 30px;
+      }
+      .btnStu {
+        background-color: red;
+        padding: 10px;
+        text-decoration: none;
+        border: solid rgb(12, 12, 12) 1px;
+        border-radius: 5px;
+        color: black;
+      }
+      .btnReg {
+        background-color: yellow;
+        padding: 10px;
+        text-decoration: none;
+        border: solid rgb(7, 7, 7) 1px;
+        border-radius: 5px;
+        color: black;
+      }
+    </style>
+    <center>
+      <div class="container">
+        <div class="btns">
+          <a class="btnStu" href="Student-form.html">Student Form</a>
+          <a class="btnReg" href="rgister-form.html">Register</a>
+        </div>
+        <h1>Message</h1>
+        <textarea
+          name="text"
+          id="textBox"
+          maxlength="100"
+          placeholder="Enter your message..."
+        ></textarea>
+        <div class="charWar">
+          <p id="charCount"></p>
+          <p id="warning"></p>
+        </div>
+        <button id="btnSend">Send</button>
+      </div>
+    </center>
+
+    <script>
+      var textBox = document.getElementById("textBox");
+      var charCount = document.getElementById("charCount");
+      var warning = document.getElementById("warning");
+
+      textBox.addEventListener("keypress", function () {
+        var charLength = textBox.value.length;
+
+        if (charLength <= 100) {
+          charCount.textContent = charLength + "/100";
+        }
+        if (charLength == 100) {
+          warning.textContent = "Your reached maximum limit";
+        }
+      });
+    </script>
+  </body>
+</html>

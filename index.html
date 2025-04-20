@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+
+    <!-- Java Script -->
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <style>
+      body {
+        text-align: center;
+        background-color: lightseagreen;
+      }
+      #container {
+        background-color: white;
+        width: 350px;
+        border-radius: 30px;
+        height: 400px;
+        box-shadow: 10px 10px 10px black;
+      }
+      .btns {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding-top: 30px;
+      }
+      .btnReg {
+        background-color: yellow;
+        padding: 10px;
+        text-decoration: none;
+        border: solid rgb(12, 12, 12) 1px;
+        border-radius: 5px;
+        color: black;
+      }
+      .btnMes {
+        background-color: green;
+        padding: 10px;
+        text-decoration: none;
+        border: solid rgb(7, 7, 7) 1px;
+        border-radius: 5px;
+        color: black;
+      }
+      #saveBtn {
+        width: 100%;
+        background-color: aqua;
+        border-radius: 5px;
+      }
+      #names {
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      #age {
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      #gender {
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      #courses {
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      #mail {
+        width: 250px;
+        height: 25px;
+        border-radius: 5px;
+      }
+      h5{
+        display: inline;
+        color: red;
+      }
+      
+    </style>
+
+    <center>
+      <div id="container">
+        <div class="btns">
+          <a class="btnReg" href="rgister-form.html">Register</a>
+          <a class="btnMes" href="message.html">Message</a>
+        </div>
+        <h1>STUDENT FORM</h1>
+        <table>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input
+                type="name"
+                id="names"
+                placeholder="Enter your name"
+                required
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Age</td>
+            <td>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="Enter your age"
+                required
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Gender</td>
+            <td id="gender">
+              <input type="radio" name="gender" id="male" required /> Male
+              <input type="radio" name="gender" id="female" required /> Female
+            </td>
+          </tr>
+
+          <tr>
+            <td>Course</td>
+            <td>
+              <select name="course" id="courses" required>
+                <option>-- Select --</option>
+                <option>HTML & CSS</option>
+                <option>Tailwind.CSS</option>
+                <option>Java Script</option>
+                <option>React.js</option>
+                <option>Node.js</option>
+                <option>Python</option>
+                <option>Java</option>
+                <option>C++</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Email</td>
+            <td>
+              <input
+                type="email"
+                id="mail"
+                placeholder="ex:raj@gmail.com"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><h5></h5></td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <button id="saveBtn">Save</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <table
+        border="1"
+        style="margin-top: 2%; background-color: white"
+        id="list"
+      >
+        <tr>
+          <td>Name</td>
+          <td>Age</td>
+          <td>Gender</td>
+          <td>Course</td>
+          <td>Email</td>
+          <td>Action</td>
+        </tr>
+      </table>
+    </center>
+
+    <script>
+      var name = document.getElementById("names");
+      var age = document.getElementById("age");
+      var male = document.getElementById("male");
+      var female = document.getElementById("female");
+      var course = document.getElementById("courses");
+      var email = document.getElementById("mail");
+      var saveBtn = document.getElementById("saveBtn");
+      var list = document.getElementById("list");
+      var warning = document.querySelector("h5")
+
+      saveBtn.addEventListener("click", function (event) {
+        var inputs = document.querySelectorAll("input");
+        inputs.forEach(input => {
+          input.required = true;
+        })
+        var tr = document.createElement("tr");
+        
+
+        var td1 = document.createElement("td");
+        td1.textContent = names.value;
+        tr.append(td1);
+
+        var td2 = document.createElement("td");
+        td2.textContent = age.value;
+        tr.append(td2);
+
+        var td3 = document.createElement("td");
+        td3.textContent = male.checked
+          ? "Male"
+          : female.checked
+          ? "Female"
+          : "";
+        tr.append(td3);
+
+        var td4 = document.createElement("td");
+        td4.innerHTML = course.value;
+        tr.append(td4);
+
+        var td5 = document.createElement("td");
+        td5.textContent = mail.value;
+        tr.append(td5);
+
+        var td6 = document.createElement("td");
+        var deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.style.backgroundColor = "red";
+        deleteBtn.style.color = "white";
+        deleteBtn.style.cursor = "pointer";
+        td6.append(deleteBtn);
+        tr.append(td6);
+        deleteBtn.addEventListener("click", function () {
+          tr.remove(tr);
+        });
+        list.append(tr);
+      });
+      email.addEventListener("keypress",function() {
+        warning.textContent = "Enter valid email id"
+        warning.append(h5)
+      })
+      
+    </script>
+  </body>
+</html>
