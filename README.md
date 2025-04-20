@@ -14,4 +14,4 @@ A basic registration form built using HTML, CSS, and JavaScript.
 *HTML5
 *CSS3
 *JavaScript
-Link:
+Link: https://yuvaraj200201.github.io/Registration-form/
